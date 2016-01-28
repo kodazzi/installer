@@ -8,7 +8,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Kodazzi\Installers;
+namespace Kodazzi\Installer;
 
 use Composer\IO\IOInterface;
 use Composer\Installer\LibraryInstaller;
