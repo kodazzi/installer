@@ -6,7 +6,7 @@
         "psr-0": {"Kodazzi\\Installer": "src/"}
     },
     "extra": {
-        "class": "Kodazzi\\Installer\\Plugin",
+        "class": "Kodazzi\\Installer\\Plugin"
     },
     "require": {
         "composer-plugin-api": "^1.0"
