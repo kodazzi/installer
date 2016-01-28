@@ -38,7 +38,7 @@ class BundleInstaller extends LibraryInstaller
         $vendor = $this->inflectorCamelize($vendor);
         $name = $this->inflectorCamelize($name);
 
-        return "system/bundles/{$vendor}/{$name}";
+        return "system/bundles/Kodazzi/Cms";
     }
 
     /**
