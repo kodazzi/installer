@@ -38,7 +38,7 @@ class BundleInstaller extends LibraryInstaller
         $vendor = $this->inflectorCamelize($vendor);
         $name = $this->inflectorCamelize($name);
 
-        return "system/bundles/Kodazzi/Cms";
+        return "system/bundles/{$vendor}/{$name}";
     }
 
     /**
@@ -53,6 +53,6 @@ class BundleInstaller extends LibraryInstaller
     {
         $string = 'x'.strtolower(trim($string));
         $string = ucwords(preg_replace('/[\s_]+/', ' ', $string));
-        return substr(str_replace(' ', '', $string), 1);
+        return ucfirst(substr(str_replace(' ', '', $string), 1));
     }
 } 
