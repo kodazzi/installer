@@ -1,0 +1,14 @@
+{
+    "name": "kodazzi/installer",
+    "type": "composer-plugin",
+    "license": "MIT",
+    "autoload": {
+        "psr-0": {"Kodazzi\\Installer": "src/"}
+    },
+    "extra": {
+        "class": "Kodazzi\\Installer\\Plugin",
+    },
+    "require": {
+        "composer-plugin-api": "^1.0"
+    }
+}
