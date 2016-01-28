@@ -22,16 +22,23 @@ class BundleInstaller extends LibraryInstaller
      */
     public function getInstallPath(PackageInterface $package)
     {
-        if (!preg_match('/^(kodazzi)/i', $package->getPrettyName()))
+        $prettyName = $package->getPrettyName();
+
+        if (!preg_match('/^(kodazzi)\/[a-z0-9-]+$/i', $prettyName))
         {
             throw new \InvalidArgumentException(
-                'Unable to install template, phpdocumentor templates '
-                .'should always start their package name with '
-                .'"kodazzi/"'
+                'Unable to install bundle, '
+                .'should always be formatted '
+                .'"kodazzi/packagename" or "kodazzi/package-name"'
             );
         }
 
-        return 'system/bundles/'.$package->getPrettyName();
+        list($vendor, $name) = explode('/', $prettyName);
+
+        $vendor = $this->inflectorCamelize($vendor);
+        $name = $this->inflectorCamelize($name);
+
+        return "system/bundles/{$vendor}/{$name}";
     }
 
     /**
@@ -40,5 +47,12 @@ class BundleInstaller extends LibraryInstaller
     public function supports($packageType)
     {
         return 'kodazzi-bundle' === $packageType;
+    }
+
+    private function inflectorCamelize($string)
+    {
+        $string = 'x'.strtolower(trim($string));
+        $string = ucwords(preg_replace('/[\s_]+/', ' ', $string));
+        return substr(str_replace(' ', '', $string), 1);
     }
 } 
